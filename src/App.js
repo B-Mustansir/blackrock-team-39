@@ -1,10 +1,12 @@
 import './App.css'
+import './index.css'
 import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import MainDash from './components/MainDash/MainDash';
 import Sidebar from './components/Sidebar';
 import Cards from './components/Cards/Cards';
 import Login from './components/Login/Login';
+import TokenCreation from './components/TokenListing/TokenCreation';
 
 function App() {
   const [selected, setSelected] = useState(0);
@@ -16,7 +18,7 @@ function App() {
         <MainDash />
         </>;
       case 1:
-        return <Cards />;
+        return <TokenCreation />;
       default:
         return <></>;
     }
