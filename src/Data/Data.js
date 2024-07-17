@@ -13,9 +13,9 @@ import { UilUsdSquare, UilMoneyWithdrawal } from "@iconscout/react-unicons";
 import { keyboard } from "@testing-library/user-event/dist/keyboard";
 
 // Recent Card Imports
-import img1 from "../imgs/img1.png";
-import img2 from "../imgs/img2.png";
-import img3 from "../imgs/img3.png";
+import img1 from "../images/img1.png";
+import img2 from "../images/img2.png";
+import img3 from "../images/img3.png";
 
 // Sidebar Data
 export const SidebarData = [
@@ -72,6 +72,23 @@ export const cardsData = [
       {
         name: "Revenue",
         data: [10, 100, 50, 70, 80, 30, 40],
+      },
+    ],
+  },
+  {
+    title: "Expenses",
+    color: {
+      backGround:
+        "linear-gradient(rgb(248, 212, 154) -146.42%, rgb(255 202 113) -46.42%)",
+      boxShadow: "0px 10px 20px 0px #F9D59B",
+    },
+    barValue: 60,
+    value: "4,270",
+    png: UilClipboardAlt,
+    series: [
+      {
+        name: "Expenses",
+        data: [10, 25, 15, 30, 12, 15, 20],
       },
     ],
   },
