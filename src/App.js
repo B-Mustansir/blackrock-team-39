@@ -11,8 +11,14 @@ import RefrshHandler from './RefrshHandler';
 import TokenCreation from './components/TokenListing/TokenCreation';
 import Assets from './components/AssetsPage/Assets';
 
+
+
+
+
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);  
+
+   
 
   const PrivateRoute = ({ element }) => {
     return isAuthenticated ? element : <Navigate to="/login" />;
@@ -47,6 +53,7 @@ function App() {
               <div className="AppGlass">
                 <Sidebar selected={selected} setSelected={setSelected} />
                 {renderComponent()}
+               
               </div>
             }
           />
