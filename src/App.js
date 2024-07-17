@@ -9,6 +9,8 @@ import Login from './components/Login/Login';
 import Signup from './components/Login/Signup';
 import RefrshHandler from './RefrshHandler';
 import TokenCreation from './components/TokenListing/TokenCreation';
+import BuyToken from 'components/BuyTokens/BuyTokens';
+import AddBalance from 'components/AddBalance/AddBalance';
 // import Assets from './components/AssetsPage/Assets';
 
 function App() {
@@ -28,6 +30,10 @@ function App() {
         </>;
       case 1:
         return <TokenCreation />;
+      case 2:
+        return <BuyToken />;
+      case 3:
+        return <AddBalance />;
       default:
         return <></>;
     }

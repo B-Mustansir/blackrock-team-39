@@ -4,9 +4,10 @@ import './TokenCreation.css';
 import { useState } from 'react'
 import { WiDayWindy } from "react-icons/wi";
 import { IoWaterOutline } from "react-icons/io5";
-import { Button, Label, TextInput, Datepicker } from "flowbite-react";
+import { Button, Label, TextInput, Datepicker, FileInput } from "flowbite-react";
 
 const TokenCreation = () => {
+    const [image, setImage] = useState(null);
     const currencySymbol = new Intl.NumberFormat(navigator.language, { style: 'currency', currency: 'INR' }).formatToParts()[0].value;
     const [formData, setFormData] = useState({
         plantType: '',
@@ -29,6 +30,7 @@ const TokenCreation = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            const imageUrl = await uploadImage(image);
             const token = localStorage.getItem('token');
             if (!token) {
                 throw new Error('No token found');
@@ -37,7 +39,7 @@ const TokenCreation = () => {
             const headers = {
                 'authorization': `Bearer ${token}`
             };
-    
+            formData.imageOfCrop = imageUrl;
             const response = await axios.post(process.env.REACT_APP_BACKEND_URL + '/registerasset', formData, { headers });
             console.log('Asset created:', response.data);
             // Optionally, handle success (e.g., show a success message or redirect)
@@ -47,6 +49,24 @@ const TokenCreation = () => {
         }
     };
     
+    const uploadImage = async (image) => {
+        const data = new FormData()
+        data.append("file", image)
+        data.append("upload_preset", "mentormee")
+        data.append("cloud_name", "mentomee-cloud")
+    
+        const res = await fetch("https://api.cloudinary.com/v1_1/mentormee-cloud/image/upload", {
+          method: "post",
+          body: data
+        })
+    
+        const resp = await res.json()
+        console.log(resp);
+        console.log(resp.secure_url);
+
+        return resp.secure_url;
+    }
+
     return (
         <form className='TokenCreation' onSubmit={handleSubmit}>
             <h2>Create a token</h2>
@@ -189,6 +209,16 @@ const TokenCreation = () => {
                             value={formData.numberOfSeeds}
                             onChange={handleChange}
                         />
+                    </div>
+                </div>
+            </div>
+            <div className="flex max-w-md flex-col gap-4">
+                <div>
+                    <div className="mb-2 block">
+                        <Label htmlFor="imageOfCrop" value="Image of Crop" />
+                    </div>
+                    <div className="mb-2 block">
+                        <FileInput id="file-upload-helper-text" helperText="SVG, PNG, JPG or GIF (MAX. 800x400px)." onChange={(e)=>setImage(e.target.files[0])}/>
                     </div>
                 </div>
             </div>
