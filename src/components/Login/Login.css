@@ -50,8 +50,8 @@ label {
     font-style: italic;
 }
 
-button {
-    background-color: rgb(229, 221, 229);
+.loginButton {
+    background-color: purple;
     border: none;
     font-size: 20px;
     /* color: rgb(48, 46, 46);       */
