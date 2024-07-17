@@ -9,6 +9,7 @@ import Login from './components/Login/Login';
 import Signup from './components/Login/Signup';
 import RefrshHandler from './RefrshHandler';
 import TokenCreation from './components/TokenListing/TokenCreation';
+import Assets from './components/AssetsPage/Assets';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -39,6 +40,7 @@ function App() {
           <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/assets" element={<Assets />} />
           <Route
             path="/home"
             element={
