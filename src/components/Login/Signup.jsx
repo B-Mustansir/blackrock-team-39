@@ -14,7 +14,7 @@ function Signup() {
   const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
+    // console.log(name, value);
     const copySignupInfo = { ...signupInfo };
     copySignupInfo[name] = value;
     setSignupInfo(copySignupInfo);
@@ -27,7 +27,7 @@ function Signup() {
       return handleError("name, email and password are required");
     }
     try {
-      const url = `https://deploy-mern-app-1-api.vercel.app/auth/signup`;
+      const url = process.env.REACT_APP_BACKEND_URL+`/auth/signup`;
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -48,7 +48,7 @@ function Signup() {
       } else if (!success) {
         handleError(message);
       }
-      console.log(result);
+      // console.log(result);
     } catch (err) {
       handleError(err);
     }
