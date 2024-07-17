@@ -18,3 +18,34 @@
         align-items: center;
     }
 }
+
+.main-page {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.main-page button {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.chatbot-icon {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    z-index: 1000;
+}
+
+.chatbot-icon:hover {
+    background-color: #0056b3;
+}
