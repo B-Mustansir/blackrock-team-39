@@ -14,7 +14,7 @@ const TokenCreation = () => {
                     <div className="mb-2 block">
                         <Label htmlFor="base" value="Plant Type" />
                     </div>
-                    <TextInput id="base" type="text" sizing="md" placeholder="e.g., lettuce, tomatoes, herbs" required />
+                    <TextInput className='px-2' id="base" type="text" sizing="md" placeholder="e.g., lettuce, tomatoes, herbs" required />
                 </div>
             </div>
             <div className="flex max-w-md flex-col gap-4">
@@ -22,7 +22,7 @@ const TokenCreation = () => {
                     <div className="mb-2 block">
                         <Label htmlFor="base" value="Variety" />
                     </div>
-                    <TextInput id="base" type="text" sizing="md" placeholder="e.g., Romaine lettuce, Cherry tomatoes" />
+                    <TextInput className='px-2' id="base" type="text" sizing="md" placeholder="e.g., Romaine lettuce, Cherry tomatoes" />
                 </div>
             </div>
             <div className="flex max-w-md flex-col gap-4">
@@ -31,7 +31,7 @@ const TokenCreation = () => {
                         <Label htmlFor="base" value="Planting Date" />
                     </div>
                     <div className="mb-2 block">
-                        <Datepicker sizing="md" maxDate={new Date()} />
+                        <Datepicker className='px-2' sizing="md" maxDate={new Date()} />
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@ const TokenCreation = () => {
                         <Label htmlFor="base" value="Expected Harvest Date" />
                     </div>
                     <div className="mb-2 block">
-                        <Datepicker sizing="md" minDate={new Date()} />
+                        <Datepicker className='px-2' sizing="md" minDate={new Date()} />
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@ const TokenCreation = () => {
                     <div className="mb-2 block">
                         <Label htmlFor="base" value="Cultivation Method" />
                     </div>
-                    <div className="mb-2 block">
+                    <div className="mb-2 block px-2">
                         <Button.Group>
                             <Button color="gray">
                                 <IoWaterOutline className="mr-3 h-4 w-4" />
@@ -70,7 +70,7 @@ const TokenCreation = () => {
                         <Label htmlFor="base" value="Seed Value" />
                     </div>
                     <div className="mb-2 block">
-                        <TextInput id="base" type="number" sizing="md" placeholder={`e.g., ${currencySymbol}100`} />
+                        <TextInput className='px-2' id="base" type="number" sizing="md" placeholder={`e.g., ${currencySymbol}100`} />
                     </div>
                 </div>
             </div>
@@ -80,7 +80,7 @@ const TokenCreation = () => {
                         <Label htmlFor="base" value="Estimated Yield Per Plant (in INR)" />
                     </div>
                     <div className="mb-2 block">
-                        <TextInput id="base" type="number" sizing="md" placeholder={`e.g., ${currencySymbol}100`} />
+                        <TextInput className='px-2' id="base" type="number" sizing="md" placeholder={`e.g., ${currencySymbol}100`} />
                     </div>
                 </div>
             </div>
@@ -90,12 +90,12 @@ const TokenCreation = () => {
                         <Label htmlFor="base" value="Number of Seeds" />
                     </div>
                     <div className="mb-2 block">
-                        <TextInput id="base" type="number" sizing="md" placeholder={`e.g., 20`} />
+                        <TextInput className='px-2' id="base" type="number" sizing="md" placeholder={`e.g., 20`} />
                     </div>
                 </div>
             </div>
             <div className="flex max-w-md flex-col gap-4 py-4">
-                <div>
+                <div className='px-2' >
                     <div className="mb-2 block">
                         <Button gradientDuoTone="purpleToBlue">Create A Token</Button>
                     </div>
