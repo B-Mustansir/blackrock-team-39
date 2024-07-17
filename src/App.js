@@ -34,11 +34,11 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="*" element={<Navigate to="/login" />} />
+          <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route
-            path="/"
+            path="/home"
             element={
               <div className="AppGlass">
                 <Sidebar selected={selected} setSelected={setSelected} />
