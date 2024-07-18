@@ -114,6 +114,7 @@ const TokenCreation = () => {
                             sizing="md"
                             maxDate={new Date()}
                             onSelectedDateChanged={(date) => setFormData({ ...formData, plantingDate: date })}
+                            required
                         />
                     </div>
                 </div>
@@ -129,6 +130,7 @@ const TokenCreation = () => {
                             sizing="md"
                             minDate={new Date()}
                             onSelectedDateChanged={(date) => setFormData({ ...formData, expectedHarvestDate: date })}
+                            required
                         />
                     </div>
                 </div>
