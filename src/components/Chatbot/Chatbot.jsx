@@ -61,7 +61,7 @@ const Chatbot = ({ isOpen, onClose }) => {
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type a message..."
         />
-        <button onClick={handleSend}>Send</button>
+        <button onClick={handleSend} >Send</button>
       </div>
     </div>
   );
