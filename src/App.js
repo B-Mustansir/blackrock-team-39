@@ -10,7 +10,8 @@ import Signup from './components/Login/Signup';
 import RefrshHandler from './RefrshHandler';
 import TokenCreation from './components/TokenListing/TokenCreation';
 import BuyToken from 'components/BuyTokens/BuyTokens';
-import AddBalance from 'components/AddBalance/AddBalance';
+// import AddBalance from 'components/AddBalance/AddBalance';
+import MyChart from 'components/AddBalance/MyChart';
 import StockListing from 'components/StockListing/StockListing';
 // import Assets from './components/AssetsPage/Assets';
 
@@ -33,7 +34,7 @@ function App() {
       case 2:
         return <BuyToken />;
       case 3:
-        return <AddBalance />;
+        return <MyChart />;
       case 4: 
         return <StockListing/>
       default:
