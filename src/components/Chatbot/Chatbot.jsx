@@ -12,20 +12,20 @@ const Chatbot = ({ isOpen, onClose }) => {
       setInput("");
 
       try {
-        // Replace 'YOUR_API_URL' with your actual API endpoint
-        const response = await fetch("YOUR_API_URL", {
+        const response = await fetch(process.env.REACT_APP_FLASK_BACKEND_URL + '/chat', {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ message: input }),
+          body: JSON.stringify({ question: input, stock: "AAPL" }),
         });
 
         const data = await response.json();
+        console.log(data);
 
         setMessages((prevMessages) => [
           ...prevMessages,
-          { text: data.response, sender: "bot" },
+          { text: data.final_score, sender: "bot" },
         ]);
       } catch (error) {
         console.error("Error fetching data:", error);

@@ -81,11 +81,6 @@ const subscribe = async (amount) => {
 }
 
 const MainDash = () => {
-  const [isChatbotOpen, setIsChatbotOpen] = useState(false);
-
-  const toggleChatbot = () => {
-    setIsChatbotOpen(!isChatbotOpen);
-  };
 
   return (
     <div className="MainDash">
@@ -94,11 +89,6 @@ const MainDash = () => {
       <Table />
       <div className="flex flex-wrap gap-2 mb-4">
         <Button color="light"outline gradientDuoTone="purpleToBlue" onClick={()=>subscribe(100)}>Add funds</Button>
-      </div>
-      <Chatbot isOpen={isChatbotOpen} onClose={toggleChatbot} />
-
-      <div className="chatbot-icon" onClick={toggleChatbot}>
-        <FontAwesomeIcon icon={faCommentDots} size="2x" />
       </div>
     </div>
   );

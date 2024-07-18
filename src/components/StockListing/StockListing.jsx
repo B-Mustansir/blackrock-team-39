@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Button } from "flowbite-react";
 
 export function StockListing() {
   const [data, setData] = useState([]);
@@ -24,9 +25,10 @@ export function StockListing() {
         <ul className="list-none">
           {data.map((company, index) => (
             <li key={index} className="company-card mb-4">
+              <br/>
               <div className="flex justify-between">
                 <h2 className="text-xl font-bold">{company.company_name}</h2>
-                <span className="text-gray-500">{company.stock}</span>
+                <Button className="text-gray-500" color="light" pill>{company.stock}</Button>
               </div>
               <ul className="list-disc pl-4 mt-2">
                 <li className="text-gray-700">
