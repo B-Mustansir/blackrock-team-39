@@ -29,11 +29,11 @@ export const SidebarData = [
   },
   {
     icon: UilUsersAlt,
-    heading: "Customers",
+    heading: "Tokenized farms",
   },
   {
     icon: UilPackage,
-    heading: 'Products'
+    heading: 'Stocks'
   },
   {
     icon: UilChart,
