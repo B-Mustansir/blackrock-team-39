@@ -11,17 +11,11 @@ import RefrshHandler from './RefrshHandler';
 import TokenCreation from './components/TokenListing/TokenCreation';
 import BuyToken from 'components/BuyTokens/BuyTokens';
 import AddBalance from 'components/AddBalance/AddBalance';
+import StockListing from 'components/StockListing/StockListing';
 // import Assets from './components/AssetsPage/Assets';
-
-
-
-
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);  
-
-   
-
   const PrivateRoute = ({ element }) => {
     return isAuthenticated ? element : <Navigate to="/login" />;
   };
@@ -40,6 +34,8 @@ function App() {
         return <BuyToken />;
       case 3:
         return <AddBalance />;
+      case 4: 
+        return <StockListing/>
       default:
         return <></>;
     }
