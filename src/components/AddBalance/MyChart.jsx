@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
+import zoomPlugin from 'chartjs-plugin-zoom';
 import Chatbot from 'components/Chatbot/Chatbot';
 import { faCommentDots } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Banner } from "flowbite-react";
 import { HiX } from "react-icons/hi";
 import { MdAnnouncement } from "react-icons/md";
+
+Chart.register(zoomPlugin);
 
 const StockChart = () => {
 
@@ -50,30 +53,49 @@ const StockChart = () => {
       {
         label: 'Open',
         data: openPrices,
-        borderColor: 'blue',
+        borderColor: 'rgba(0, 0, 255, 0.5)',
+        backgroundColor: 'rgba(0, 0, 255, 0.2)',
+        pointBackgroundColor: 'rgba(0, 0, 255, 1)',
+        pointBorderColor: 'rgba(0, 0, 255, 1)',
+        pointRadius: 3,
+        borderWidth: 1,
         fill: false,
-        cubicInterpolationMode: 'monotone',
         tension: 0.4
       },
       {
         label: 'High',
         data: highPrices,
-        borderColor: 'green',
+        borderColor: 'rgba(0, 255, 0, 0.5)',
+        backgroundColor: 'rgba(0, 255, 0, 0.2)',
+        pointBackgroundColor: 'rgba(0, 255, 0, 1)',
+        pointBorderColor: 'rgba(0, 255, 0, 1)',
+        pointRadius: 3,
+        borderWidth: 1,
         fill: false,
         tension: 0.4
       },
       {
         label: 'Low',
         data: lowPrices,
-        borderColor: 'red',
-        fill: false
+        borderColor: 'rgba(255, 0, 0, 0.5)',
+        backgroundColor: 'rgba(255, 0, 0, 0.2)',
+        pointBackgroundColor: 'rgba(255, 0, 0, 1)',
+        pointBorderColor: 'rgba(255, 0, 0, 1)',
+        pointRadius: 3,
+        borderWidth: 1,
+        fill: false,
+        tension: 0.4
       },
       {
         label: 'Close',
         data: closePrices,
-        borderColor: 'purple',
+        borderColor: 'rgba(128, 0, 128, 0.5)',
+        backgroundColor: 'rgba(128, 0, 128, 0.2)',
+        pointBackgroundColor: 'rgba(128, 0, 128, 1)',
+        pointBorderColor: 'rgba(128, 0, 128, 1)',
+        pointRadius: 3,
+        borderWidth: 1,
         fill: false,
-        cubicInterpolationMode: 'monotone',
         tension: 0.4
       },
     ],
@@ -86,6 +108,25 @@ const StockChart = () => {
         display: true,
         text: 'Apple Inc. Stock Prices',
       },
+      legend: {
+        display: true,
+        position: 'top',
+      },
+      zoom: {
+        pan: {
+          enabled: true,
+          mode: 'xy'
+        },
+        zoom: {
+          wheel: {
+            enabled: true,
+          },
+          pinch: {
+            enabled: true
+          },
+          mode: 'xy',
+        },
+      },
     },
     interaction: {
       intersect: false,
@@ -94,19 +135,31 @@ const StockChart = () => {
       x: {
         display: true,
         title: {
-          display: true
-        }
+          display: true,
+          text: 'Date',
+        },
+        grid: {
+          display: true,
+        },
       },
       y: {
         display: true,
         title: {
           display: true,
-          text: 'Value'
+          text: 'Value',
+        },
+        grid: {
+          display: true,
         },
         suggestedMin: -10,
-        suggestedMax: 200
-      }
-    }
+        suggestedMax: 250,
+      },
+    },
+    elements: {
+      point: {
+        radius: 2,
+      },
+    },
   };
 
   return (
@@ -122,7 +175,7 @@ const StockChart = () => {
                   href="https://flowbite.com"
                   className="inline font-medium text-cyan-600 underline decoration-solid underline-offset-2 hover:no-underline dark:text-cyan-500"
                 >
-                  AAPL
+                &nbsp; AAPL
                 </a>
               </span>
             </p>
@@ -132,7 +185,7 @@ const StockChart = () => {
           </Banner.CollapseButton>
         </div>
       </Banner>
-      <h2>Stock Prices Chart</h2>
+      <h2 className="text-2xl pt-4">Stock Prices Chart</h2>
       <Line data={data} options={options} />
       <Chatbot isOpen={isChatbotOpen} onClose={toggleChatbot} />
       <div className="chatbot-icon" onClick={toggleChatbot}>
@@ -143,4 +196,3 @@ const StockChart = () => {
 };
 
 export default StockChart;
-

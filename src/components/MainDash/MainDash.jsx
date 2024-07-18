@@ -89,7 +89,7 @@ const MainDash = () => {
 
   return (
     <div className="MainDash">
-      <h1>Dashboard</h1>
+      <h1 className="text-2xl">Dashboard</h1>
       <Cards />
       <Table />
       <div className="flex flex-wrap gap-2">

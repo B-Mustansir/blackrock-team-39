@@ -69,7 +69,7 @@ const TokenCreation = () => {
 
     return (
         <form className='TokenCreation' onSubmit={handleSubmit}>
-            <h2>Create a token</h2>
+            <h2 className="text-2xl">Create a token</h2>
             <div className="flex max-w-md flex-col gap-4">
                 <div>
                     <div className="mb-2 block">
