@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Cards from "../Cards/Cards";
 import Table from "../Table/Table";
 import "./MainDash.css";
@@ -82,10 +82,28 @@ const subscribe = async (amount) => {
 }
 
 const MainDash = () => {
-
+  const [balance, setBalance] = useState(0);
   const tokenHoldings = JSON.parse(localStorage.getItem('tokenHoldings'));
   const email = localStorage.getItem('email');
-  const balance = localStorage.getItem('balance');
+
+  useEffect(() => {
+    const fetchBalance = async () => {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/balance?email=${encodeURIComponent(email)}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch balance');
+        }
+        const data = await response.json();
+        setBalance(data.balance);
+      } catch (error) {
+        console.error('Error fetching balance:', error);
+      }
+    };
+
+    if (email) {
+      fetchBalance();
+    }
+  }, [email]);
 
   return (
     <div className="MainDash">
@@ -96,7 +114,7 @@ const MainDash = () => {
         <div className="flex flex-wrap gap-2 mb-4">
           <Button color="light" outline gradientDuoTone="purpleToBlue" onClick={() => subscribe(100)}>Add funds</Button>
         </div>
-        <Badge size="md" icon={HiCheck}>Balance: ₹{balance} &nbsp;</Badge>
+        <Badge size="md" icon={HiCheck}>Balance: ₹{balance/100} &nbsp;</Badge>
       </div>
     </div>
   );
