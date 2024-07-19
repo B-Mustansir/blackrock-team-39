@@ -34,6 +34,7 @@ function Signup() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(signupInfo),
+        mode: "cors"
       });
       const result = await response.json();
       const { success, message, error } = result;

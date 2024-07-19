@@ -33,7 +33,8 @@ function Login() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(loginInfo)
+                body: JSON.stringify(loginInfo),
+                mode: 'cors'
             });
             const result = await response.json();
             const { message, success, jwtToken, email, name, tokenHoldings, balance, error } = result;
