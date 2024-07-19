@@ -12,8 +12,7 @@ import { MdAnnouncement } from "react-icons/md";
 Chart.register(zoomPlugin);
 
 const StockChart = () => {
-
-  const [histData, sethistData] = useState([]);
+  const [histData, setHistData] = useState([]);
   const [notification, setNotification] = useState('');
   const [isChatbotOpen, setIsChatbotOpen] = useState(false);
 
@@ -25,27 +24,27 @@ const StockChart = () => {
     const fetchNotification = async () => {
       const response = await fetch(process.env.REACT_APP_FLASK_BACKEND_URL + '/notify' + '/AAPL'); // Replace with your API endpoint
       const data = await response.json();
-      console.log(data);
       setNotification(data['final_score']);
-      console.log(notification);
     };
+
     const fetchData = async () => {
       const apiResponse = await fetch(process.env.REACT_APP_FLASK_BACKEND_URL + '/stock' + '/AAPL'); // Replace with your API endpoint
       const data = await apiResponse.json();
-      console.log(data);
-      sethistData(JSON.parse(data['hist_data']));
-      console.log(histData);
+      setHistData(JSON.parse(data['hist_data']));
     };
-    
+
     fetchNotification();
     fetchData();
   }, []);
 
-  const dates = histData.map((_, index) => `Day ${index + 1}`);
-  const openPrices = histData.map(data => data.Open);
-  const highPrices = histData.map(data => data.High);
-  const lowPrices = histData.map(data => data.Low);
-  const closePrices = histData.map(data => data.Close);
+  const displayDays = 125; // Number of days to display
+  const slicedHistData = histData.slice(-displayDays);
+
+  const dates = slicedHistData.map((_, index) => `${index + 1}`);
+  const openPrices = slicedHistData.map(data => data.Open);
+  const highPrices = slicedHistData.map(data => data.High);
+  const lowPrices = slicedHistData.map(data => data.Low);
+  const closePrices = slicedHistData.map(data => data.Close);
 
   const data = {
     labels: dates,
@@ -151,8 +150,8 @@ const StockChart = () => {
         grid: {
           display: true,
         },
-        suggestedMin: -10,
-        suggestedMax: 250,
+        suggestedMin: 150,
+        suggestedMax: 200,
       },
     },
     elements: {
