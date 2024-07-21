@@ -92,10 +92,13 @@ function Login() {
                         value={loginInfo.password}
                     />
                 </div>
-                <button className='loginButton' type='submit'>Login</button>
+                <button className='loginButton text-white' type='submit'>Login</button>
                 <span>Don't have an account?
                     <Link to="/signup"> Signup</Link>
                 </span>
+                <span className='text-xl pt-2'>Test Credentials:</span>
+                <span>email: <b>user@gmail.com</b> </span>
+                <span>password: <b>user@password</b> </span>
             </form>
             <ToastContainer />
         </div>
